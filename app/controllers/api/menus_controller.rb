@@ -14,7 +14,7 @@ class Api::MenusController < ApplicationController
 
   def update
     menu = Menu.find(params[:id])
-    menu.update(active: !menu.complete)
+    menu.update(active: !menu.active)
     render json: menu
   end
 
@@ -27,7 +27,7 @@ class Api::MenusController < ApplicationController
   private 
 
   def menu_params
-    params.require(:menu).permit(:name, :complete)
+    params.require(:menu).permit(:name, :active)
   end
 
 end
